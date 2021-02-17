@@ -8,28 +8,29 @@ namespace Lab_2_integrationTest
     {
         private static int round = 3;
         private static string strSpace = "";
+        private static string space = string.Concat(Enumerable.Repeat(" ", 13));
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Sin: ,|| Cos: ,|| Cot: ,|| Sec: ");
+            //"  || Sin: ,|| Cos: ,|| Cot: ,|| Sec: "
+            Console.WriteLine("  " + SetStr("Sin") + space + SetStr("Cos") + space + SetStr("Cot") + space + SetStr("Sec"));
             for (double i = 30; i <= 90; i += 15)
             {
                 GetMathStr(i, Math.Sin(MathLib.GetRadAngle(i)), MathLib.GetSin(i));
 
-                Console.Write("  ||  ");
+                //Console.Write("  ||  ");
                 GetMathStr(i, Math.Cos(MathLib.GetRadAngle(i)), MathLib.GetCos(i));
                 
-                Console.Write("  ||  ");
+                //Console.Write("  ||  ");
                 GetMathStr(i, (1 / Math.Tan(MathLib.GetRadAngle(i))), MathLib.GetCot(i));
 
-                Console.Write("  ||  ");
+                //Console.Write("  ||  ");
                 GetMathStr(i, (1 / Math.Cos(MathLib.GetRadAngle(i))), MathLib.GetSec(i));          
 
                 Console.WriteLine();
             }
 
             Console.WriteLine();
-            Console.WriteLine("End: ");
+            Console.WriteLine("  || End: ");
             for (double i = 10; i <= 180; i+= 20)
             {
                 GetMathStr(i, MathLib.GetBigFormWithMath(i), MathLib.GetBigForm(i));
@@ -37,10 +38,17 @@ namespace Lab_2_integrationTest
             }
         }
 
+        public static string SetStr(string str)
+        {
+            return "|| " + str + ":";
+        }
+
         public static void GetMathStr(double i, double math, double myMath)
         {
             try
             {
+                Console.Write("  ||  ");
+
                 double myMathRound = Math.Round(myMath, round);
                 double mathRound = Math.Round(math, round);
                 
